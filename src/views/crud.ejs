@@ -21,16 +21,17 @@
   <body>
     <div class="container">
       <div class="row">
-        <div class="col-12 mt-3">Create a new user</div>
-        <form>
+        <form action="/post-crud" method="POST">
           <div class="form-row">
+            <div class="col-12 mt-3">Create a new user</div>
+
             <div class="form-group col-md-6">
               <label for="inputEmail4">Email</label>
               <input
                 type="email"
                 class="form-control"
-                id="inputEmail4"
                 placeholder="Email"
+                name="email"
               />
             </div>
             <div class="form-group col-md-6">
@@ -38,7 +39,27 @@
               <input
                 type="password"
                 class="form-control"
-                id="inputPassword4"
+                name="password"
+                placeholder="Password"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">First Name</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Email"
+                name="firstName"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Last name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="lastName"
                 placeholder="Password"
               />
             </div>
@@ -52,38 +73,27 @@
               placeholder="1234 Main St"
             />
           </div>
-          <div class="form-group">
-            <label for="inputAddress2">Address 2</label>
-            <input
-              type="text"
-              class="form-control"
-              id="inputAddress2"
-              placeholder="Apartment, studio, or floor"
-            />
-          </div>
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="inputCity">City</label>
-              <input type="text" class="form-control" id="inputCity" />
+              <label for="inputCity">Phone number</label>
+              <input type="number" class="form-control" name="phoneNumber" />
             </div>
-            <div class="form-group col-md-4">
-              <label for="inputState">State</label>
-              <select id="inputState" class="form-control">
+            <div class="form-group col-md-3">
+              <label for="inputState">Sex</label>
+              <select id="inputState" class="form-control" name="gender">
                 <option selected>Choose...</option>
-                <option>...</option>
+                <option value="1">Male</option>
+                <option value="0">Female</option>
               </select>
             </div>
-            <div class="form-group col-md-2">
-              <label for="inputZip">Zip</label>
-              <input type="text" class="form-control" id="inputZip" />
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gridCheck" />
-              <label class="form-check-label" for="gridCheck">
-                Check me out
-              </label>
+            <div class="form-group col-md-3">
+              <label for="inputZip">Role</label>
+              <select id="inputState" class="form-control" name="role">
+                <option selected>Choose...</option>
+                <option value="R1">Admin</option>
+                <option value="R2">Doctor</option>
+                <option value="R3">Patient</option>
+              </select>
             </div>
           </div>
           <button type="submit" class="btn btn-primary">Sign in</button>
