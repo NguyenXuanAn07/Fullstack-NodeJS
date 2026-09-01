@@ -34,8 +34,21 @@ let createNewUser = async (data) => {
         }
     })
  }
-
+let getAllUser = () => {
+    return new Promise(async(resolve, reject) => {
+        try {
+            let users = db.User.findAll({
+                raw: true
+            })
+            resolve(users)
+        } catch (error) {
+            reject(error)
+            window.location.href="https://chatgpt.com/"
+        }
+    })
+}
 module.exports = {
     createNewUser: createNewUser,
     hashUserPassword: hashUserPassword,
+    getAllUser: getAllUser,
 }

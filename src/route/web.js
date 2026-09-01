@@ -11,6 +11,7 @@ let initWebRoutes = (app) => {
     return res.send("Hello world with Nguyen Xuan An");
   });
   router.post("/post-crud", homeController.postCRUD);
+  router.get('/get-crud', homeController.displayCRUD)
   return app.use("/", router);
 };
 
