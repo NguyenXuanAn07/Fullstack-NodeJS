@@ -39,10 +39,22 @@ let displayCRUD = async (req, res) => {
     dataTable: data,
   });
 };
+let getEditCRUD = async (req, res) => {
+  let userId = req.query.id;
+  console.log(userId);
+  if (userId) {
+    let userData = await CRUDService.getUserInfoById(userId);
+    //check user data not found
+    return res.render('test/editCRUD.ejs');
+  } else {
+    return res.send("User not found");
+  }
+};
 module.exports = {
   getHomePage: getHomePage,
   getAboutPage: getAboutPage,
   getCRUD: getCRUD,
   postCRUD: postCRUD,
   displayCRUD: displayCRUD,
+  getEditCRUD: getEditCRUD,
 };
