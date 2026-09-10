@@ -30,6 +30,16 @@ let postCRUD = async (req, res) => {
   return res.send("post crud from server");
 };
 
+let putCRUD = async (req, res) => {
+  try {
+    await CRUDService.updateUserData(req.body);
+    return res.redirect("/get-crud");
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send("Unable to update user");
+  }
+};
+
 let displayCRUD = async (req, res) => {
   let data = await CRUDService.getAllUser();
   console.log("------------");
@@ -45,16 +55,30 @@ let getEditCRUD = async (req, res) => {
   if (userId) {
     let userData = await CRUDService.getUserInfoById(userId);
     //check user data not found
-    return res.render('test/editCRUD.ejs');
+    return res.render("test/editCRUD.ejs", {
+      user: userData,
+    });
   } else {
     return res.send("User not found");
   }
 };
+let deleteCRUD = async (req,res) => {
+  let id = req.query.id;
+  if(id){
+    await CRUDService.deleteUserById(id);
+    return res.redirect("displayCRUD.ejs")
+  }else{
+    return res.send("Unavailable user!")
+  }
+  
+}
 module.exports = {
   getHomePage: getHomePage,
   getAboutPage: getAboutPage,
   getCRUD: getCRUD,
   postCRUD: postCRUD,
+  putCRUD: putCRUD,
   displayCRUD: displayCRUD,
   getEditCRUD: getEditCRUD,
+  deleteCRUD: deleteCRUD,
 };
